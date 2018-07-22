@@ -34,7 +34,7 @@ module Quack::Quackable
     alias_method "orig_#{method_name}", method_name
     define_method(method_name) do |*args|
       signature = Quack::Signature.new(*signature_args)
-      send("orig_#{method_name}", *signature.apply(*args))
+      send("orig_#{method_name}", *signature.apply!(*args))
     end
   end
 end

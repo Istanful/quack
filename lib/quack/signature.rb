@@ -5,7 +5,7 @@ class Quack::Signature
     @signature = signature
   end
 
-  def apply(*args)
+  def apply!(*args)
     validate args, signature
     signature.each_with_index.map do |arg_signature, i|
       convert! args[i], arg_signature
