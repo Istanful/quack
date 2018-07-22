@@ -1,9 +1,3 @@
-class Quack::SignatureError < ArgumentError
-end
-
-class Quack::WrongNumberOfArgumentsError < ArgumentError
-end
-
 class Quack::Signature
   attr_reader :signature
 
