@@ -3,14 +3,14 @@
 class Quack::HashConvertor
   attr_reader :conversion_methods
 
-  # Public: Initialize a HashConvertor.
+  # Internal: Initialize a HashConvertor.
   #
   # conversion_methods - The keywords and conversion methods to be used.
   def initialize(conversion_methods)
     @conversion_methods = conversion_methods
   end
 
-  # Public: Converts the given symbol arguments with the provided conversion
+  # Internal: Converts the given symbol arguments with the provided conversion
   # methods.
   #
   # argument_hash - The hash with arguments to convert.

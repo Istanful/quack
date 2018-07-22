@@ -3,14 +3,14 @@
 class Quack::DefaultConvertor
   attr_reader :conversion_method
 
-  # Public: Initialize a DefaultConvertor.
+  # Internal: Initialize a DefaultConvertor.
   #
   # conversion_method - The method to call that does the conversion
   def initialize(conversion_method)
     @conversion_method = conversion_method
   end
 
-  # Public: Converts the given argument with the conversion method given in the
+  # Internal: Converts the given argument with the conversion method given in the
   # initializer.
   #
   # argument - Any object to convert.
