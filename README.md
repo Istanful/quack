@@ -22,7 +22,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+quack_like :add, :to_i, goodbye: :to_i
+def add(a, b:)
+  # ...
+end
+
+add("1", b: "2")
+#=> 3
+
+add({}, b: 1)
+#=> QuackError: First argument must respond to `#to_i`.
+
+add(1, b: {})
+#=> QuackError: `b` must respond to `#to_i`.
+```
 
 ## Development
 
