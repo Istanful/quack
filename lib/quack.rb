@@ -9,3 +9,8 @@ require "quack/quackable"
 
 module Quack
 end
+
+class Object
+  extend Quack::Quackable
+  singleton_class.extend Quack::Quackable
+end
