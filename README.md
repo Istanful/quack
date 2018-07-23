@@ -1,11 +1,7 @@
 # Quack
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/quack`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Quack makes ducktyping easy!
 
 ## Installation
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -21,21 +17,44 @@ Or install it yourself as:
     $ gem install quack
 
 ## Usage
+To use Quack you annotate your methods with the `.quacks_like` method.
 
 ```ruby
-quack_like :add, :to_i, goodbye: :to_i
-def add(a, b:)
-  # ...
+def add(int_a, int_b)
+  int_a + int_b
 end
+quacks_like :add, :to_i, :to_i
+```
 
-add("1", b: "2")
+This will automatically convert the arguments if possible:
+
+```ruby
+add('1', 2)
 #=> 3
+```
 
-add({}, b: 1)
-#=> QuackError: First argument must respond to `#to_i`.
+If the arguments can not be converted an error will be raised:
+```ruby
+add(1, {})
+#=> Quack::SignatureError: `{}` must respond to `to_i`.
+```
 
-add(1, b: {})
-#=> QuackError: `b` must respond to `#to_i`.
+You can force symbol arguments to be converted like so:
+```ruby
+def divide(int_a, divisor: 2)
+  int_a / divisor
+end
+quacks_like :divide, :to_i, divisor: :to_f
+```
+
+If you want to add a signature to a class method you use the singleton class:
+```ruby
+class Calculator
+  def self.add(int_a, int_b)
+    int_a + int_b
+  end
+  singleton_class.quacks_like :add, :int_a, :int_b
+end
 ```
 
 ## Development
