@@ -1,6 +1,6 @@
 # Internal: The class responsible for massaging parameters before passing them
 # to the signatured method.
-class Quack::Signature
+class Quacks::Signature
   attr_reader :signature
 
   # Internal: Initialize a signature object.
@@ -15,12 +15,12 @@ class Quack::Signature
   #
   # Examples:
   #
-  #   Quack::Signature.new(:to_i, bignum: :to_s).apply!('1', 100)
+  #   Quacks::Signature.new(:to_i, bignum: :to_s).apply!('1', 100)
   #   #=> [1, { bignum: '100' }]
   #
   # Returns an Array of arguments.
-  # Raises Quack::SignatureError if the arguments could not be converted.
-  # Raises Quack::WrongNumberOfArgumentsError if wrong number of arguments.
+  # Raises Quacks::SignatureError if the arguments could not be converted.
+  # Raises Quacks::WrongNumberOfArgumentsError if wrong number of arguments.
   def apply!(*args)
     validate args, signature
     signature.each_with_index.map do |arg_signature, i|
@@ -34,7 +34,7 @@ class Quack::Signature
   #
   # conversion - An Hash with conversions or a Symbol conversion.
   #
-  # Returns a Quack::HashConvertor or Quack::DefaultConvertor instance.
+  # Returns a Quacks::HashConvertor or Quacks::DefaultConvertor instance.
   def convertor_for(conversion)
     convertor_class(conversion).new(conversion)
   end
@@ -45,9 +45,9 @@ class Quack::Signature
   def convertor_class(conversion)
     case conversion
     when Hash
-      Quack::HashConvertor
+      Quacks::HashConvertor
     else
-      Quack::DefaultConvertor
+      Quacks::DefaultConvertor
     end
   end
 
@@ -65,10 +65,10 @@ class Quack::Signature
   # Internal: Determine if correct number of arguments were given.
   #
   # Returns true if correct number of arguments.
-  # Raises Quack::WrongNumberOfArgumentsError if wrong number of arguments
+  # Raises Quacks::WrongNumberOfArgumentsError if wrong number of arguments
   #   given.
   def validate(arguments, signature)
     return true if arguments.length == signature.length
-    raise Quack::WrongNumberOfArgumentsError
+    raise Quacks::WrongNumberOfArgumentsError
   end
 end

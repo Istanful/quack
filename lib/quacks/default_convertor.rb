@@ -1,6 +1,6 @@
 # Internal: The default convertor class to be used in order to convert a single
 # argument.
-class Quack::DefaultConvertor
+class Quacks::DefaultConvertor
   attr_reader :conversion_method
 
   # Internal: Initialize a DefaultConvertor.
@@ -16,10 +16,10 @@ class Quack::DefaultConvertor
   # argument - Any object to convert.
   #
   # Returns the converted argument.
-  # Raises Quack::SignatureError if the argument could not be converted.
+  # Raises Quacks::SignatureError if the argument could not be converted.
   def convert!(argument)
     return argument.public_send(conversion_method) if convertable?(argument)
-    raise(Quack::SignatureError,
+    raise(Quacks::SignatureError,
           "`#{argument}` must respond to `#{conversion_method}`")
   end
 

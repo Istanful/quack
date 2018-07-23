@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "quack"
+require "quacks"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

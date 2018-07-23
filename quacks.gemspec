@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "quack/version"
+require "quacks/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "quack"
-  spec.version       = Quack::VERSION
+  spec.name          = "quacks"
+  spec.version       = Quacks::VERSION
   spec.authors       = ["Emric"]
   spec.email         = ["w.e.w@live.se"]
 
   spec.summary       = "Add signatures to your methods"
-  spec.homepage      = "http://github.com/istanful/quack"
+  spec.homepage      = "http://github.com/istanful/quacks"
   spec.license       = "MIT"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"

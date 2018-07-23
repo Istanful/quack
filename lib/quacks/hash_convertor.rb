@@ -1,6 +1,6 @@
 # Internal: The convertor class to iterate and convert symbol arguments or
 # hashes.
-class Quack::HashConvertor
+class Quacks::HashConvertor
   attr_reader :conversion_methods
 
   # Internal: Initialize a HashConvertor.
@@ -17,16 +17,16 @@ class Quack::HashConvertor
   #
   # Examples:
   #
-  #   convertor = Quack::HashConvertor.new(word: :to_s, number: :to_i)
+  #   convertor = Quacks::HashConvertor.new(word: :to_s, number: :to_i)
   #   convertor.convert!(word: nil, number: "100")
   #   #=> { word: "", number: 100 }
   #
   # Returns an Hash with the converted arguments.
-  # Raises Quack::SignatureError if the arguments could not be converted.
+  # Raises Quacks::SignatureError if the arguments could not be converted.
   def convert!(argument_hash)
       conversion_methods
         .each_with_object(argument_hash) do |(name, conversion), args|
-      args[name] = Quack::DefaultConvertor.new(conversion).convert!(args[name])
+      args[name] = Quacks::DefaultConvertor.new(conversion).convert!(args[name])
     end
   end
 end

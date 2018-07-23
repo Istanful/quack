@@ -1,5 +1,5 @@
-# Quack
-Quack makes ducktyping easy!
+# Quacks
+Quacks makes ducktyping easy!
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -17,7 +17,7 @@ Or install it yourself as:
     $ gem install quack
 
 ## Usage
-To use Quack you annotate your methods with the `.quacks_like` method.
+To use Quacks you annotate your methods with the `.quacks_like` method.
 
 ```ruby
 def add(int_a, int_b)
@@ -36,7 +36,7 @@ add('1', 2)
 If the arguments can not be converted an error will be raised:
 ```ruby
 add(1, {})
-#=> Quack::SignatureError: `{}` must respond to `to_i`.
+#=> Quacks::SignatureError: `{}` must respond to `to_i`.
 ```
 
 You can force symbol arguments to be converted like so:

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Quack::DefaultConvertor do
+RSpec.describe Quacks::DefaultConvertor do
   context 'when given a valid argument' do
     it 'converts that argument with the given conversion method' do
       convertor = described_class.new(:to_i)
@@ -17,7 +17,7 @@ RSpec.describe Quack::DefaultConvertor do
 
       application = ->{ convertor.convert!({}) }
 
-      expect(application).to raise_error(Quack::SignatureError)
+      expect(application).to raise_error(Quacks::SignatureError)
     end
   end
 end

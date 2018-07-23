@@ -1,5 +1,5 @@
 # Public: Concern to be extended in order to enable the quacks like method.
-module Quack::Quackable
+module Quacks::Quackable
   # Public: Force the given method to use the given conversions for its
   # arguments.
   #
@@ -21,7 +21,7 @@ module Quack::Quackable
   #
   #   # To add signatures to class methods you can use the singleton class.
   #   class Calculator
-  #     singleton_class.extend(Quack::Quackable)
+  #     singleton_class.extend(Quacks::Quackable)
   #
   #     def self.add(int_a, int_b)
   #       int_a + int_b
@@ -33,7 +33,7 @@ module Quack::Quackable
   def quacks_like(method_name, *signature_args)
     alias_method "orig_#{method_name}", method_name
     define_method(method_name) do |*args|
-      signature = Quack::Signature.new(*signature_args)
+      signature = Quacks::Signature.new(*signature_args)
       send("orig_#{method_name}", *signature.apply!(*args))
     end
   end
